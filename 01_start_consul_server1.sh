@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker pull consul
+docker pull consul:1.9.7
 
 docker network rm dev-network
 
@@ -19,4 +19,4 @@ docker network create dev-network
         "server":true,
         "connect": {"enabled":true}
         }' \
-    consul agent -server -ui -node=consul-srv-1 -bootstrap-expect=3 -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
+    consul:1.9.7 agent -server -ui -node=consul-srv-1 -bootstrap-expect=3 -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
