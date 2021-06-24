@@ -1,6 +1,8 @@
 #!/bin/sh
 
 docker pull consul
+docker pull hashicorp/counting-service:0.0.2
+
 
   docker run \
     -d \

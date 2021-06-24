@@ -9,6 +9,7 @@
         }' \
     consul agent -server -ui -node=consul-srv-2 -bootstrap-expect=1 -client=0.0.0.0 -join=172.17.0.2
 
+sleep 5
 
  docker run \
     -d \
