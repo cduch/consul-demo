@@ -8,7 +8,7 @@ docker run \
         "datacenter":"bielefeld",
         "connect": {"enabled":true}
         }' \
-consul agent -node=consul-client -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
+consul:1.10.0 agent -node=consul-client -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
 
 
 
