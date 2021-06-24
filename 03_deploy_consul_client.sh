@@ -1,6 +1,7 @@
 #!/bin/sh
 
 docker run \
+ -d
     --network dev-network \
 --name=consul-client \
     -e CONSUL_LOCAL_CONFIG='{
