@@ -2,18 +2,9 @@
 
 docker pull hashicorp/counting-service:0.0.2
 
-docker run \
-    --network dev-network \
-   -p 9001:9001 \
-   -d \
-   --name=counting-service \
-   hashicorp/counting-service:0.0.2
+#docker run --network dev-network -p 9001:9001 -d -e PORT=9001 -e COUNTING_SERVICE_URL='http://localhost:5000' --name=counting-service hashicorp/counting-service:0.0.2
+
+docker run --network dev-network -p 9001:9001 -d -e PORT=9001 --name=counting-service hashicorp/counting-service:0.0.2
 
 
-docker exec consul-client /bin/sh -c "echo '{\"service\": {\"name\": \"counting\", \"tags\": [\"go\"], \"port\": 9001}}' >> /consul/config/counting.json"
-
-docker exec consul-client consul reload
-
-sleep 10
-clear
-dig @127.0.0.1 -p 8600 counting.service.consul
+docker exec consul-client consul connect proxy -sidecar-for counting-1 > counting-proxy.log &

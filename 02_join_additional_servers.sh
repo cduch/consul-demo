@@ -6,7 +6,8 @@
     --name=consul-srv-2 \
     -e CONSUL_LOCAL_CONFIG='{
         "datacenter":"bielefeld",
-        "server":true
+        "server":true,
+        "connect": {"enabled":true}
         }' \
     consul agent -server -ui -node=consul-srv-2 -bootstrap-expect=3 -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
 
@@ -18,6 +19,7 @@ sleep 5
     --name=consul-srv-3 \
     -e CONSUL_LOCAL_CONFIG='{
         "datacenter":"bielefeld",
-        "server":true
+        "server":true,
+        "connect": {"enabled":true}
         }' \
     consul agent -server -ui -node=consul-srv-3 -bootstrap-expect=3 -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"

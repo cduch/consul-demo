@@ -16,6 +16,7 @@ docker network create dev-network
     --name=consul-srv-1 \
     -e CONSUL_LOCAL_CONFIG='{
         "datacenter":"bielefeld",
-        "server":true
+        "server":true,
+        "connect": {"enabled":true}
         }' \
     consul agent -server -ui -node=consul-srv-1 -bootstrap-expect=3 -client=0.0.0.0 -retry-join="consul-srv-1" -retry-join="consul-srv-2" -retry-join="consul-srv-3"
