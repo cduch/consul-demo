@@ -1,0 +1,14 @@
+global:
+  name: consul
+  datacenter: bielefeld
+server:
+  replicas: 1
+ui:
+  enabled: true
+  service:
+    type: 'NodePort'
+connectInject:
+  enabled: true
+  default: true
+controller:
+  enabled: true
